@@ -1,0 +1,9 @@
+{
+    "smtpserver":"smtp.example.com",
+    "smtpport":000,
+    "frommail":"from@example.com",
+    "tomail":"to@example.com",
+    "password":"password",
+    "subject":"subject",
+    "type":"plain"
+}
