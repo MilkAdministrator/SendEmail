@@ -1,8 +1,8 @@
 {
     "smtpserver":"smtp.example.com",
     "smtpport":000,
-    "frommail":"from@example.com",
-    "tomail":"to@example.com",
+    "fromemail":"from@example.com",
+    "toemail":"to@example.com",
     "password":"password",
     "subject":"subject",
     "type":"plain"
