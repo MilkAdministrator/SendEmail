@@ -38,6 +38,10 @@ if os.path.exists(".json"):
             subject = data["subject"]
         else:
             exit("ERROR - EMAIL SUBJECT UNKNOWN")
+        if "count" in data:
+            count = data["count"]
+        else:
+            exit("ERROR - SEND COUNT UNKNOWN")
     except Exception as e:
         exit(e)
 else:
@@ -50,15 +54,16 @@ if os.path.exists(".content"):
         exit(e)
 else:
     exit("ERROR - FILE NOT FOUND")
-msg = MIMEText(content,type,"utf-8")
-msg["From"] = frommail
-msg["To"] = tomail
-msg["Subject"] = Header(subject,"utf-8")
-try:
-    server = smtplib.SMTP_SSL(smtpserver,smtpport)
-    server.login(frommail,password)
-    server.sendmail(frommail,tomail,msg.as_string())
-    server.quit()
-    print("EMAIL SENT SUCCESSFULLY")
-except Exception as e:
-    print(e)
+for i in range(count):
+    msg = MIMEText(content,type,"utf-8")
+    msg["From"] = frommail
+    msg["To"] = tomail
+    msg["Subject"] = Header(subject,"utf-8")
+    try:
+        server = smtplib.SMTP_SSL(smtpserver,smtpport)
+        server.login(frommail,password)
+        server.sendmail(frommail,tomail,msg.as_string())
+        server.quit()
+        print("EMAIL SENT SUCCESSFULLY",count)
+    except Exception as e:
+        print(e)
